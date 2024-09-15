@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@vercel/node": "^3.2.14",
     "connect-mongo": "^5.1.0",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
@@ -12,13 +13,13 @@
   },
   "name": "express-js-2",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js"
+    "start": "node api/index.js"
   },
-  "engines":{
-    "node":"20.11.1"
+  "engines": {
+    "node": "20.11.1"
   },
   "keywords": [],
   "author": "",
