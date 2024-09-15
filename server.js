@@ -3,6 +3,7 @@ const server=express()
 const session = require('express-session');
 const { MongoClient } = require('mongodb');
 const MongoStore = require('connect-mongo');
+const path = require('path');
 
 
 // var popup = require('popups');
@@ -13,7 +14,6 @@ const port=3002
 
 const text="http://localhost:"
 
-const path=__dirname
 
 // delete metho
 var methodOverride=require('method-override')
@@ -30,8 +30,7 @@ const Schema=mongoose.Schema;
 const moment=require('moment')
 
 
-server.use(express.static('public'))
-
+server.use(express.static(path.join(__dirname, 'public')));
 
 server.use(express.json())
 
