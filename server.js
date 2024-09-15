@@ -85,10 +85,7 @@ async function connectToMongo() {
 
 
 
-server.get('/',(req,res)=>{
-    res.sendFile(path+'/test.html')
 
-})
 
 
 
@@ -537,7 +534,7 @@ server.post('/Top-Laser-Monthely/:id', async (req, res) => {
 
 
     // Loginn GET
-    server.get("/Top-Laser-Loginn",async (req,res)=>{
+    server.get("/",async (req,res)=>{
         req.session.destroy(err=>{
             if(err){
                 console.error("Error destroying session:", err);
