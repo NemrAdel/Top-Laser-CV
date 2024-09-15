@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    background-image: url('../top-laser-background2.jpg');
+    background-size: cover; 
+    background-attachment: fixed;
+
+}
+#text{
+    color: red;
+    font-family: 'Gill Sans';
+
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 2px solid #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+tr:nth-child(even) {
+    background-color: #000000;
+}

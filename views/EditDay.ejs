@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Laser Data</title>
+    <link rel="stylesheet" href="/cssFiles/EditDay.css">
+    <link rel="icon" href="/top laser black instagram.png" type="image/png">
+
+</head>
+<body>
+    <img src="/top laser black .png" alt="Top Laser Image" />
+    <h1>All Data Of The Week</h1>
+    <% const OurDay=moment(arr2[(arr2.length)-1].Today).format('D / M / YYYY')%>
+    <%
+// Calculate the last Monday
+// const lastMonday = moment(OurDay).startOf('week').subtract(1, 'day').startOf('week');
+const Monday = moment(OurDay).clone().isoWeekday(1);
+const lastMonday=Monday.format('D / M / YYYY')
+// Calculate the next Saturday
+const nextSaturday = moment().endOf('week').add(1, 'day').startOf('week').add(5, 'day');
+// Check if OurDay is between lastMonday and nextSaturday
+const isBetweeen = moment(OurDay, 'D / M / YYYY').isBetween(lastMonday, nextSaturday, null, '[]');
+%>
+<%
+    const CheckDate=arr.filter(item=>moment(OurDay).isBetween(OurDay,lastMonday,null,'[]'))    
+%>
+
+
+<% if (CheckDate) { %>
+    <table>
+        <tr>
+            <th>
+                <td>No.</td>
+                <td>Name:</td>
+                <td>Work:</td>
+                <td>Price:</td>
+                <td>Out:</td>
+                <td>Payment:</td>
+                <td>Date:</td>
+            </th>
+        </tr>
+        <tbody>
+            <% CheckDate.forEach((item,index)=>{%>
+            <tr>
+                <td><%=index+1%></td>
+                <td><%=item.Name%></td>
+                <%= item.Work %>
+                <td><% if(item.Price){%>
+                    <%= item.Price %>
+                <%}else{ %>
+                    <%= "───" %>
+                <%}%></td>
+                <td>
+                    <% if(item.Out){%>
+                    <%= item.Out %>
+                <%}else{ %>
+                    <%= "───" %>
+                <%}%>
+                </td>
+                <td><% if(item.Payment){%>
+                    <%= item.Payment %>
+                <%}else{ %>
+                    <%= "───" %>
+                <%}%></td>
+                <td><%= moment(arr2[(arr2.length)-1].Date).format('D / M / YYYY') %></td>
+                    <td>
+            </tr>
+            <%})%>
+        </tbody>
+    </table>
+
+    <%}else{%>
+        <h1>No DATA fOUND</h1>
+        <%}%>
+
+    
+</body>
+</html>

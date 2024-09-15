@@ -1,0 +1,40 @@
+<form method="post" action="/Top-Laser-DataEntry/<%= date %>">
+        <label class="label1">Name:</label>
+        <input
+            style="margin-left: 9px"
+            required
+            name="Name"
+            id="text"
+            type="text"
+            placeholder="Enter Name" />
+        <label class="label2">Work:</label>
+        <input
+            style="margin-left: 30px"
+            required
+            name="Work"
+            id="pass"
+            type="text"
+            placeholder="Enter Work" />
+        <label style="padding: 22px">Price:</label>
+        <input type="text" name="Price" placeholder="Price" />
+        <br />
+        <hr />
+        <label style="padding: 28px">Out:</label>
+        <input type="text" name="Out" placeholder="Out Price" />
+        <label style="padding: 15px">Payment:</label>
+        <input type="text" name="Payment" placeholder="Payment" />
+        <br /><br />
+        <label style="padding: 28px">Date:</label>
+        <input
+            value="<%= moment(date).format('YYYY-MM-DD') %>"
+            type="datetime"
+            name="Date"
+            id="DateInput"
+            placeholder="Enter Date">
+        <lable>Note:</lable>
+        <input type="text" name="Note" placeholder="Notes" >    
+        <br>
+        <hr>
+        <button id="submit">Submit</button>
+        <br><br>
+        </form>

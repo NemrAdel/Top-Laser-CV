@@ -1,0 +1,63 @@
+<table>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name:</th>
+                        <th>Price:</th>
+                        <th>Out:</th>
+                        <!-- <th>TimeCreated:</th> -->
+                        <th>Payment:</th>
+                        <th>lastUpdate:</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tbody>
+                        
+                            <% arr.reverse().forEach((item,index) => {%>
+                            <tr>    
+                                <td><%= index+1 %></td>
+                                <td><%= item.Name %></td>
+                                <td><%= item.Price %></td>
+                                <td><%= item.Out %></td>
+                                <td><%= item.Payment %></td>
+                                <td><%= item.Date %></td>
+                                <td>
+                                    <%if(arr.length!=0){%>
+                                        <form action="/EditUser/<%=item._id%>?_method=DELETE" method="post">
+                                            <button style="cursor: pointer;" type="submit"><i class="fa fa-trash"></i></button>
+                                            </form>
+                                    <%}%>
+                                </td>
+                            </tr>    
+                        <%})%>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="Finish"><input value="Finish" type="button" id="finish"></a>
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+                <!-- <%let resPrice=0%>
+                <%let resOut=0%>
+                <%let resPayment=0%>
+                <%let Datee%>
+                <% const LastDayDate=moment(arr2[(arr2.length)-1].Today).format('D / M / YYYY') %>
+                <% const DateFilter=arr.filter(item=>item.Date===LastDayDate) %>
+                <% DateFilter.reverse().forEach((item,index) => {%>
+                <tr>    
+                    <td><%= index+1 %></td>
+                    <td><%= item.Name %></td>
+                    <td><%= item.Price %></td>
+                    <td><%= item.Out %></td>
+                    <td><%= item.Payment %></td>
+                    <td><%= moment(arr2[(arr2.length)-1].Today).format('D / M / YYYY') %></td>
+                </tr>    
+                <%resPrice=resPrice+item.Price%>
+                <%resOut=resOut+item.Out%>
+                <%resPayment=resPayment+item.Payment%>
+                <%Datee=item.Date%>
+                <%})%> -->

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+<body>
+    <form id="searchForm">
+        <label for="dateInput">Enter Date:</label>
+        <input type="date" id="dateInput" name="searchDate">
+        <button type="submit">Search</button>
+    </form>
+    <div id="searchResults"></div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const searchDate = document.getElementById('dateInput').value;
+            searchDatabase(searchDate);
+        });
+
+        function searchDatabase(date) {
+            // Send an AJAX request to the server
+            fetch(`/search?date=${date}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Display search results
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (data.length > 0) {
+                data.forEach(item => {
+                    const listItem = document.createElement('div');
+                    listItem.textContent = `${item.name}, ${moment(item.date).format('MMMM Do YYYY')}`;
+                    resultsContainer.appendChild(listItem);
+                });
+            } else {
+                resultsContainer.textContent = 'No results found';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="/cssFiles/finish.css" >
+    <link rel="icon" href="/top laser black instagram.png" type="image/png" />
+
+</head>
+<body>
+    <img src="/top laser black .png" alt="Top Laser Image" />
+    <h1 style="font-size: 25px"><%= moment(arr2[(arr2.length)-1].Date).format('YYYY-MM-DD') %>  :ملخص اليوم</h1>
+
+    <!-- first TABLE---------------------------------------------------------------------------- -->
+    <table>
+        <h2>Main Table</h2>
+        <tr>
+            <th>No.</th>
+            <th>ألاسم:</th>
+            <th>ألشغل:</th>
+            <th>السعر:</th>
+            <th>خارج:</th>
+            <th id="Payment" calss="Payment">المصاريف:</th>
+            <th>ملاحظات:</th>
+            <th>التاريخ:</th>
+            <!-- <th>No.</th>
+            <th>Name:</th>
+            <th>Price:</th>
+            <th>Out:</th>
+            <th>Payment:</th>
+            <th>Date:</th> -->
+        </tr>
+        <tbody>
+                <%let resPrice=0%>
+                <%let resOut=0%>
+                <%let resPayment=0%>
+                <%let Datee%>
+                <% const LastDayDate=moment(arr2[(arr2.length)-1].Date) %>
+                <% const DateFilter = arr2.filter(item => moment(item.Date).isSame(moment(LastDayDate)))%>
+                <% DateFilter.reverse().forEach((item,index) => {%>
+                <tr>    
+                    <td><%= index+1 %></td>
+                    <td><%= item.Name %></td>
+                    <td><%= item.Work %></td>
+                    <td><%= item.Price %></td>
+                    <td><%= item.Out %></td>
+                    <td calss="Payment"><%= item.Payment %></td>
+                    <td class="note"><%= item.Note %></td>
+                    <td><%= moment(arr2[(arr2.length)-1].Date).format('YYYY-MM-DD') %></td>
+                </tr>    
+                <%resPrice=resPrice+item.Price%>
+                <% if (item.Out!=null) { %>
+                    <% resOut=resOut+item.Out%>
+                <% } %>
+                <%resPayment=resPayment+item.Payment%>
+                <%Datee=item.Date%>
+                <%})%>
+                
+            
+        </tbody>
+    </table>
+    <!-- Second TABLE ------------------------------------------------------------ -->
+    <br><hr>
+    <br>
+    <h2>الاجمالى:</h2>
+    <table>
+        <tr>
+
+            <th>الاجمالى:</th>
+            <th>الخارج:</th>
+            <th>المصاريف:</th>
+            <th>التاريخ:</th>
+        </tr>
+        <tbody>
+
+            <tr>
+                <td><%= resPrice %></td>
+                <td><%= resOut %></td>
+                <td><%= resPayment %></td>
+                <td><%= moment(Datee).format('YYYY-MM-DD') %></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+    <br><br>
+
+
+<!-- THIRD TABLE------------------------------------------------------------------------- -->
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>الاسم:</th>               
+            <th>الشغل</th>               
+            <th>الخارج</th>
+            <th>ملاحظات</th>
+        </tr>
+        <tbody>
+            <hr>
+            <h2>الخارج:</h2>
+            <% DateFilter.reverse().forEach((item,index) => {%>
+                <% if (item.Out!=null) { %>
+                    <tr>
+                        <td><%= index+1 %></td>
+                        <td><%= item.Name %></td>
+                        <td><%= item.Work %></td>
+                        <td><%= item.Out %></td>
+                        <td><%= item.Note %></td>
+                    </tr>
+                <% } %>
+                <%})%>
+
+        </tbody>
+    </table>
+    <br>
+    <a href="/Top-Laser-Login" > Login</a>
+
+</body>
+</html>

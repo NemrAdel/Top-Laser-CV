@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+</head>
+<body>
+    <form method="post" action="/email">
+        <label  >E mail <span class="mail">📧</span>:</label>
+        <br>
+        <input name="Email" class="email" type="email" placeholder="E-mail">
+        <br><br>
+        <button>Send <span class="right">✔</span></button>
+        <h2><%= arr[(arr.length)-1].UserName%> and <%=arr.at(-1).Password%>  </h2>
+    </form>
+
+</body>
+<style>
+    body{
+        background-color: black;
+        color: white;
+        text-align: center;
+        margin-top:200px
+    }
+    label{
+        font-size: 60px;
+    }
+    .email{
+        font-size: 50px;
+        border:solid rgb(255, 255, 255) 5px;
+        background-color: rgb(0, 0, 0);
+        color:white;
+
+    }
+    .right{
+        color: rgb(0, 255, 0);
+    }
+    button{
+        font-size: 50px;
+        border:solid rgb(255, 255, 255) 5px;
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+    }
+
+
+
+</style>
+</html>
+

@@ -1,0 +1,60 @@
+body{
+    background-color: black;
+    color: rgb(255, 123, 0);
+    text-align: center;
+    ::selection{
+        color: rgb(182, 114, 246);
+    }   
+    background-image: url('../top-laser-background3.jpg');
+    background-size: cover; 
+}
+img{
+    height: 120px;
+    width: 120px;
+    margin-right: 1400px;
+    /* display: inline; */
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 2px;
+}
+tr:nth-child(even) {
+    background-color: #000000;
+}
+i{
+    color:black;
+    /* background-color: red; */
+    cursor:pointer;
+    border:none;
+}
+.icon-button{
+    background-image: url('/x.ico');
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-size: cover;
+}
+a.Search{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.Search:hover{
+    background-color: #ffffff;
+    color:#000000
+    
+}

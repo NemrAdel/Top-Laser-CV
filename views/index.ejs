@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" href="/top laser black instagram.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/cssFiles/index.css">
+</head>
+<body>
+    <%if (arr.length==0){%>
+        <!-- <h1 style="text-align: center; margin-top:20%;font-size: 70px;">No Data Found</h1> -->
+        <h1 style="text-align: center;">Welcome</h1>
+        <form  action="/" method="post">
+            <label class="label1">First Name:</label>
+            <input required name="UserName" id="text" type="text" placeholder="Enter Name">
+            <br><hr class="hr1">
+            <label class="label2">Password:</label>
+            <input required name="Password" id="pass" type="password" placeholder="Enter password">
+            <br>
+            <hr class="hr2">
+            <label style="padding:28px;">E-mail:</label>
+            <input required type="Email" name="Email" placeholder="Enter -mail">
+            <br>
+            <button type="submit" id="submit">Submit</button>
+            <br>
+            
+            <label style="margin-left:100px;" for="Countries">Choose Country:</label>
+            <select style="margin-right: 50px;" name="Countries" id="Countries">
+                <%arr2.forEach(item=>{%>
+                    <option><%=item %></option>
+                    <%})%> 
+                </select><hr>
+                <%const Male=["Male","Female","Nothing"] %>
+                <label>Choose Male:</label>
+                <select name="Male">
+                    <% Male.forEach(item => { %>
+                        <option><%=item %></option>
+                    <% }) %>
+                </select>
+
+
+            <br>
+            <br><hr class="hr3">
+            <a style="color: red;"  href="user">User Data 👈</a>
+            <br><br>
+        </form>
+    <%}else{%>
+        <h1 style="text-align: center;">Welcome</h1>
+        <form  action="/" method="post">
+            <label class="label1">First Name:</label>
+            <input required name="UserName" id="text" type="text" placeholder="Enter Name">
+            <br><hr class="hr1">
+            <label class="label2">Password:</label>
+            <input required name="Password" id="pass" type="password" placeholder="Enter password">
+            <br>
+            <hr class="hr2">
+            <label style="padding:28px;">E-mail:</label>
+            <input required type="Email" name="Email" placeholder="Enter E-mail">
+            <br><hr>
+            
+            <label style="margin-left:100px;" for="Countries">Choose Country:</label>
+            <select style="margin-right: 50px;" name="Countries" id="Countries">
+                <%arr2.forEach(item=>{%>
+                    <option><%=item %></option>
+                    <%})%> 
+                </select><hr>
+                <%const Male=["Male","Female","Nothing"] %>
+                <label>Choose Male:</label>
+                <select name="Male">
+                    <% Male.forEach(item => { %>
+                        <option><%=item %></option>
+                    <% }) %>
+                </select>
+                
+                <button id="submit">Submit</button>
+                <!-- <h1 > <span style="letter-spacing: 3px;color: rgb(238, 131, 9); border:solid 2px yellowgreen">THE LAST ID IS</span> "<%=arr[(arr.length)-1]._id  %>"</h1> -->
+        </form>
+        <br><hr class="hr3">
+        <a style="color: red;"  href="user">User Data 👈</a>
+        <br><br>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>Name:</th>
+                <th>Password:</th>
+                <th>E-Mail:</th>
+                <!-- <th>TimeCreated:</th> -->
+                <th>Country:</th>
+                <th>Male:</th>
+                <th>lastUpdate:</th>
+                <th>Delete</th>
+            </tr>
+            <tbody>
+                
+                    <% arr.reverse().forEach((item,index) => {%>
+                    <tr>    
+                        <td><%= index+1 %></td>
+                        <td><%= item.UserName %></td>
+                        <td><%= item.Password %></td>
+                        <td><%= item.Email %></td>
+                        <td><%= item.Countries %></td>
+                        <td><%= item.Male %></td>
+                        <td><%= moment(item.updatedAt).format('DD MMMM YYYY,H:MM:SS A') %></td>
+                        <td>
+                            <%if(arr.length!=0){%>
+                                <form action="/user/<%=item._id%>?_method=DELETE" method="post">
+                                    <button style="cursor:pointer;" type="submit"><i class="fa fa-trash"></i></button>
+                                    </form>
+                            <%}%>
+                        </td>
+                    </tr>    
+                <%})%>
+            </tr>
+        </tbody>
+    </table>
+    <%}%>
+</body>
+
+<script>
+    const submit=document.querySelector("#submit");
+    submit.onclick=changeText;
+    function changeText(){
+        if (submit.innerText=="Submit"){
+            submit.innerText="Done✔"
+        }
+        else{
+            submit.innerText="Submit"
+        }
+        
+    }
+</script>
+</html>

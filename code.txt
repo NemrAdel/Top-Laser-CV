@@ -1,0 +1,315 @@
+<body>
+    <img src="/top laser black .png" alt="Top Laser Image" />
+    <% const LastDayDate=moment(arr2[(arr2.length)-1].Today).format('YYYY/M/D') %>
+    <% const LastDayData=moment(arr[(arr.length)-1].Date).format('YYYY/M/D') %>
+    <% const DateFilter=arr.filter(item=>moment(item.Date).isBetween(LastDayDate,LastDayData,null,'[]')) %>
+    <h1 style="text-align: center">Date : <%= LastDayDate %></h1>
+    <% if (DateFilter.length>0) { %>
+        <form method="post" action="/Top-Laser-DataEntry/<%= arr2[(arr2.length)-1]._id %>">
+        <label class="label1">Name:</label>
+        <input
+            style="margin-left: 9px"
+            required
+            name="Name"
+            id="text"
+            type="text"
+            placeholder="Enter Name" />
+        <label class="label2">Work:</label>
+        <input
+            style="margin-left: 30px"
+            required
+            name="Work"
+            id="pass"
+            type="text"
+            placeholder="Enter Work" />
+        <label style="padding: 22px">Price:</label>
+        <input type="text" name="Price" placeholder="Price" />
+        <br />
+        <hr />
+        <label style="padding: 28px">Out:</label>
+        <input type="text" name="Out" placeholder="Out Price" />
+        <label style="padding-left: 28px">PaymentDetail:</label>
+        <input type="text" name="PaymentDetail" placeholder="Payment Detail" />
+        <label style="padding: 15px">Payment:</label>
+        <input type="text" name="Payment" placeholder="Payment" />
+        <br /><br />
+        <label style="padding: 28px">Date:</label>
+        <input
+            value="<%= moment(arr2[(arr2.length)-1].Today).format('YYYY/M/D') %>"
+            type="datetime"
+            name="Date"
+            id="DateInput"
+            placeholder="Enter Date" />
+        <br />
+        <hr />
+        <button id="submit">Submit</button>
+        <br /><br />
+        </form>
+            <table>
+        <tr>
+            <th>No.</th>
+            <th>Name:</th>
+            <th>Work:</th>
+            <th>Price:</th>
+            <th>Out:</th>
+            <th>PaymentDetail:</th>
+            <th>Payment:</th>
+            <th>Date:</th>
+            <th>Delete</th>
+        </tr>
+        <tbody>
+            <%DateFilter.reverse().forEach((item,index)=>{%>
+            <tr>
+            <td><%= index+1 %></td>
+            <td><%= item.Name %></td>
+            <td><%= item.Work %></td>
+            <td><% if(item.Price){%>
+                <%= item.Price %>
+            <%}else{ %>
+                <%= "───" %>
+            <%}%></td>
+            <td>
+                <% if(item.Out){%>
+                <%= item.Out %>
+            <%}else{ %>
+                <%= "───" %>
+            <%}%>
+            </td>
+            <td><% if(item.PaymentDetail){%>
+                <%= item.PaymentDetail %>
+            <%}else{ %>
+                <%= "───" %>
+            <%}%></td>
+            <td><% if(item.Payment){%>
+                <%= item.Payment %>
+            <%}else{ %>
+                <%= "───" %>
+            <%}%></td>
+            <td><%= moment(arr2[(arr2.length)-1].Today).format('D / M / YYYY') %></td>
+                <td>
+            <form
+                class="deleteForm"
+                action="/Top-Laser-DataEntry/<%= arr2[(arr2.length)-1]._id %>/<%=item._id%>?_method=DELETE"
+                method="post">
+                <button onclick="formatDate()" class="delete" style="cursor: pointer" type="submit">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </form>
+                </td>
+            </tr>
+            <%})%> 
+        </table>
+        <br>
+        <a> <input value="Finish" type="button" id="finish"> </a>
+    <% }else{%>
+    <form
+    action="/Top-Laser-DataEntry/<%= arr2[(arr2.length)-1]._id %>"
+    method="post">
+    <label class="label1">Name:</label>
+    <input
+        style="margin-left: 29px"
+        required
+        name="Name"
+        id="text"
+        type="text"
+        placeholder="Enter Name" />
+
+    <label class="label2">Work:</label>
+    <input
+        style="margin-left: 30px"
+        required
+        name="Work"
+        id="pass"
+        type="text"
+        placeholder="Enter Work" />
+
+    <label style="padding: 22px">Price:</label>
+    <input type="text" name="Price" placeholder="Price" />
+    <br />
+    <hr />
+    <label style="padding: 28px">Out:</label>
+    <input type="text" name="Out" placeholder="Out Price" />
+
+    <label style="padding: 28px">PaymentDetail:</label>
+    <input type="text" name="PaymentDetail" placeholder="Out Price" />
+
+    <label style="padding: 15px">Payment:</label>
+    <input type="text" name="Payment" placeholder="Payment" />
+
+    <label style="padding: 28px">Date:</label>
+    <input id="DateInput" value="<%= moment(arr2[(arr2.length)-1].Today).format('YYYY/M/D') %>" required type="datetime" name="Date" placeholder="Enter Date" />
+    <br />
+    <hr />
+    <button onclick="formatDate()" id="submit">Submit</button>
+    <br /><br />
+    </form>
+    <br><br>
+    <h1 style="font-size: 50px;">No Date Found in <%= LastDayDate%></h1>
+    
+    <h1><%= DateFilter %></h1>
+    <%}%>
+</body>
+
+<script>
+
+
+    // function formatDate() {
+    //     const DateInput = document.getElementById('DateInput').value; // Get the input date value
+    //     const formattedDate = new Date(DateInput).toISOString().slice(0, 10).replace(/-/g, "/"); // Format the date
+    //     console.log("Formatted Date:", formattedDate);
+    //     // Here you can use formattedDate to send it to the server or perform any other action
+    // }
+
+
+
+    const finish = document.querySelector("#finish");
+    // const deleteForm = document.querySelector(".deleteForm");
+    const deleteButton = document.querySelectorAll(".delete");
+    // const deleteForm = document.getElementById("deleteForm");
+    // const deleteButton = document.getElementById("delete");
+    finish.onclick = finishDay;
+
+    function finishDay() {
+      // Display a confirmation dialog
+    const confirmMessage = "Are you sure you want to finish the day?";
+    const userResponse = confirm(confirmMessage);
+
+      // Check the user's response
+    if (userResponse) {
+        // If the user clicks "OK", proceed with the action
+        // alert("Day finished successfully!");
+        // Add your further actions here
+        window.location.href = "/Top-Laser-Finish/<%=arr2[(arr2.length)-1]._id%>";
+    } else {
+        window.location.href = "/Top-Laser-DataEntry/<%=arr2[(arr2.length)-1]._id%>";
+    }
+    }
+
+    deleteButtons.forEach((button) => {
+    button.onclick = deleteItem;
+    });
+
+    function deleteItem(event) {
+    const confirmMessage = "Are you sure you want to delete this item?";
+    const userResponse = confirm(confirmMessage);
+    if (userResponse) {
+        const form = event.target.closest(".deleteForm");
+        if (form) {
+        form.submit();
+        }
+    }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// dataentry SCRIPT
+
+
+
+    <script>
+    
+    
+        // function formatDate() {
+        //     const DateInput = document.getElementById('DateInput').value; // Get the input date value
+        //     const formattedDate = new Date(DateInput).toISOString().slice(0, 10).replace(/-/g, "/"); // Format the date
+        //     console.log("Formatted Date:", formattedDate);
+        //     // Here you can use formattedDate to send it to the server or perform any other action
+        // }
+    
+    
+    
+        const finish = document.querySelector("#finish");
+        // const deleteForm = document.querySelector(".deleteForm");
+        const deleteButton = document.querySelectorAll(".delete");
+        // const deleteForm = document.getElementById("deleteForm");
+        // const deleteButton = document.getElementById("delete");
+        finish.onclick = finishDay;
+    
+        function finishDay() {
+          // Display a confirmation dialog
+        const confirmMessage = "Are you sure you want to finish the day?";
+        const userResponse = confirm(confirmMessage);
+    
+          // Check the user's response
+        if (userResponse) {
+            // If the user clicks "OK", proceed with the action
+            // alert("Day finished successfully!");
+            // Add your further actions here
+            window.location.href = "/Top-Laser-Finish/<%=arr2[(arr2.length)-1]._id%>";
+        } else {
+            window.location.href = "/Top-Laser-DataEntry/<%=arr2[(arr2.length)-1]._id%>";
+        }
+        }
+    
+        deleteButtons.forEach((button) => {
+        button.onclick = deleteItem;
+        });
+    
+        function deleteItem(event) {
+        const confirmMessage = "Are you sure you want to delete this item?";
+        const userResponse = confirm(confirmMessage);
+        if (userResponse) {
+            const form = event.target.closest(".deleteForm");
+            if (form) {
+            form.submit();
+            }
+        }
+        }
+    </script>
+
+
+
+
+        server.delete('/College/Student_Table', async (req,res)=>{
+        const date=req.params.date
+        const id=req.params.id
+        const delet= await \Student_Table.findByIdAndDelete(req.params.id)
+        .then(()=>{
+            res.redirect("/College/Student_Table")
+        })
+    })
+
+
+
+
+
+
+server.put('/College/Student_Table', async (req,res)=>{
+    const update=await Student_Table.updateOne()
+    .then(()=>{
+        res.redirect('/College/Student_Table')
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+})
+
+
+
+
+
+server.put('/College/Student_Table/:id', async (req,res)=>{
+    const date=req.params.date
+    const DataOut=req.params.out
+    const DataPrice=req.params.price
+    const update=await Student_Table.updateOne({_id:req.params.id},{Sheet:"✔"})
+    .then(()=>{
+
+        res.redirect('/College/Student_Table')
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+})

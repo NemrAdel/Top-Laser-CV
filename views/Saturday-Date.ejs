@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Laser Saturday Data</title>
+    <link rel="stylesheet" href="/cssFiles/Saturday-Data.css" />    
+    <link rel="icon" href="/top laser black instagram.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <a class="image-button" href="Top-Laser-Login" ><img src="/top laser black .png" alt="Top Laser Image" /></a>
+
+    <%let Day=arr[(arr.length)-1].Date%>
+    <%  const Dayy=new Date(Day) %>
+    <% const dayOfWeek=Dayy.getDay() %>
+    <% const dayUntilMonday=(dayOfWeek+6)%7 %>
+    <% let LastMonday=new Date(Dayy) %>
+    <% LastMonday.setDate(Dayy.getDate()-dayUntilMonday) %>
+    <% const DateFilter=arr2.filter(item=>moment(item.Date).isBetween(moment(LastMonday),moment(Dayy    ),null,'[]')) %>
+    <h1 style="font-size: 25px">(<%= moment(Dayy).format('YYYY-MM-DD') %>)  ───  (<%=moment(LastMonday).format('YYYY-MM-DD') %>)  :ملخص الاسبوع</h1>
+
+            <!-- first TABLE------------------------------------------------------------------------- -->
+            <hr>
+            <h2>الخارج:</h2>
+            <table>
+
+        <tr>
+            <th>No.</th>
+            <th>الاسم:</th>
+            <th>الشغل:</th>
+            <th>السعر:</th>
+            <th>الخارج:</th>
+            <th>ملاحظات:</th>
+            <th>التاريخ:</th>
+            <th>Buttons:</th>
+        </tr>
+        <tbody>
+
+            <% let sumOut=0 %>
+            <% DateFilter.forEach((item,index) => {%>
+                <% if (item.Out!=null && item.Out!=0) { %>
+                    <% sumOut+=item.Out %>
+                    <tr>
+                        <td><%= index+1 %></td>
+                        <td><%= item.Name %></td>
+                        <td><%= item.Work %></td>
+                        <td><%= item.Price %></td>
+                        <td><%= item.Out %></td>
+                        <td class="note"><%= item.Note %></td>
+                        <td><%= moment(item.Date).format('YYYY-MM-DD') +' '+' '+ '('+ moment(item.Date).format('ddd')+')' %></td>
+                        <td class="td">
+                            <div class="buttons">
+                            <!-- ------------------------------------------------------------------------------------------------------------------------- -->
+                            <% if (!item.Price) { %>
+                                <%item.Price=0 %>
+                                <%}%>
+            
+                            <% if (!item.Out) { %>
+                                <%item.Out=0 %>
+                            <% }%>
+                            
+                            <form   class="deleteForm" action="/Top-Laser-Saturday/<%= item._id %>?_method=DELETE"  method="post">
+                                <button id="deletee" class="delete" style="cursor: pointer" type="submit" onclick="DeleteFunction(event)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                            <form action="/Top-Laser-Saturday/<%=item._id%>/<%=item.Price%>/<%=item.Out%>?_method=PUT" method="post" >
+                                <button id="✔"   DataId="<%=item._id%>" DataOut="<%= item.Out %>" DataPrice="<%= item.Price %>">✔</button>
+                            </form>
+                                    <!-- <button type="submit" id="update" ><i class="fa-solid fa-arrows-rotate"></i></button> -->
+                                    <form action="/Top-Laser-Saturday/<%=item._id%>?_method=POST" method="post">
+                                        <input name="OutNew" type="text" style="width: 18px; height: 20px;" >
+                                        <button style="display: none;" type="submit" id="update" ><i class="fa-solid fa-arrows-rotate"></i></button>
+                                    </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+
+                <%})%>
+                
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+            <tr>
+                <td>الخارج:</td>
+            </tr>
+            <tr>
+                
+                <td class="five"><%=sumOut%></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- second TABLE---------------------------------------------------------------------------- -->
+    
+
+
+
+
+    <h2>Main Table</h2>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>ألاسم:</th>
+            <th>ألشغل:</th>
+            <th>السعر:</th>
+            <th>خارج:</th>
+            <th>المصاريف:</th>
+            <th>ملاحظات</th>
+            <th>التاريخ:</th>
+        </tr>
+        <tbody>
+                <%let resPrice=0%>
+                <%let resOut=0%>
+                <%let resPayment=0%>
+                <%let Datee%>
+                <%let Accessories=0%>
+                <%let Rent=0%>
+                <%let Salary=0%>
+                
+                <% DateFilter.forEach((item,index) => {%>
+                    <tr>    
+                        <td><%= index+1 %></td>
+                        <td><%= item.Name %></td>
+                        <td><%= item.Work %></td>
+                        <td><%= item.Price %></td>
+                        <td><%= item.Out %></td>
+                        <td><%= item.Payment %></td>
+                        <td class="note"><%= item.Note %></td>
+                        <td><%= moment(item.Date).format('YY-MM-DD') +'  '+'─/─'+'('+ moment(item.Date).format('ddd')+')'%></td>                    
+                    </tr>    
+
+                
+                <%resPrice=resPrice+item.Price%>
+
+
+                <% if (item.Out!=null) { %>
+                    <% resOut=resOut+item.Out%>
+                <% } %>
+
+
+                <% if (item.Work=='اكسسوار') { %>
+                    <% Accessories+=item.Payment%>
+                <% } %>
+
+                <% if (item.Work=='ايجار') { %>
+                    <% Rent+=item.Payment%>
+                <% } %>
+
+                <% if (item.Work=='مرتب') { %>
+                    <% Salary+=item.Payment%>
+                <% } %>
+
+
+
+
+                <%resPayment=resPayment+item.Payment%>
+                <%Datee=item.Date%>
+
+                <%})%>
+                
+            
+        </tbody>
+    </table>
+    <!-- third TABLE ------------------------------------------------------------ -->
+    <h2>الاجمالى:</h2>
+    <table>
+        <tr>
+
+            <th>الاجمالى:</th>
+            <th>الخارج:</th>
+            <th>المصاريف:</th>
+            <th>المرتب</th>
+            <th>الايجار</th>
+            <th>اكسسوار</th>
+            <th>التاريخ:</th>
+        </tr>
+        <tbody>
+            
+
+            <tr>
+                <td><%= resPrice %></td>
+                <td><%= resOut %></td>
+                <td><%= resPayment %></td>
+                <td><%=Salary%></td>
+                <td> <%= Rent %> </td>
+                <td> <%= Accessories %> </td>
+                <td><%=  moment(Dayy).format('YY-MM-DD') %> </td>
+            </tr>
+            <!-- <tr>
+                <td>-700</td>
+                <td>───</td>
+                <td>───</td>
+                <td>───</td>
+            </tr> -->
+            <tr>
+                <td><%=(resPrice)-resPayment%></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><%=  moment(Dayy).format('YY-MM-DD') %> </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+    <br><br><hr>
+    
+
+    
+
+    <br><br>
+
+
+
+    
+    <br>
+    <a class="Week" href="/Top-Laser-Saturday" > Week</a>
+    <a class="login" href="/Top-Laser-Login" > Login</a>
+    <a class="Month" href="/Top-Laser-Monthely" > Month</a>
+    <br><br>
+    <a class="Search" href="/Top-Laser-Search" > Search</a>
+
+</body>
+<script>
+    const deletee=document.querySelector("#deletee")
+    deletee.onclick=DeleteFunction
+    function DeleteFunction(){
+        const confirmMessage = "Are you sure you want to delete?";
+    const userResponse = confirm(confirmMessage);
+
+      // Check the user's response
+    if (!userResponse) {
+        // If the user clicks "OK", proceed with the action
+        // alert("Day finished successfully!");
+        // Add your further actions here
+        event.preventDefault();
+    
+        
+    }}
+</script>
+</html>

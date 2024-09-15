@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Handlee&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Press+Start+2P&display=swap');
+body{
+    background-color: black;
+    font-family: 'Handlee','El Messiri', sans-serif;
+    color: rgb(255, 123, 0);
+    text-align: center;
+    ::selection{
+        color: rgb(182, 114, 246);
+    }
+    background-image: url('../top-laser-background3.jpg');
+    background-size:cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+input{
+    margin-top: 4%;
+    font-size: 30px;
+    font-family: 'Handlee','El Messiri', sans-serif;
+}
+
+
+img{
+    height: 120px;
+    width: 120px;
+    padding-right: 1400px;
+    display: inline;
+}
+
+.Saturday{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 13px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.Saturday:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+
+
+.Month{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 13px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.Month:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+.Login_Button{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 13px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.Login_Button:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+
+a.login{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+a.login:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+a.Week{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.Week:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+a.Month{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+a.Month:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+a.Search{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.Search:hover{
+    background-color: #ffffff;
+    color:#000000
+    
+}
+hr{
+    color: white;
+    width: 1350px;
+}

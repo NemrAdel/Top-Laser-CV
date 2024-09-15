@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Handlee&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Press+Start+2P&display=swap');
+body{
+    background-color: black;
+    font-family: 'Handlee','El Messiri', serif;
+    color: rgb(255, 123, 0);
+    text-align: center;
+    ::selection{
+        color: rgb(255, 255, 255);
+    }   
+    background-image: url('../top-laser-background3.jpg');
+    background-size: cover; 
+    background-attachment: fixed;
+
+}
+.image-button{
+    height: 120px;
+    width: 120px;
+    overflow: hidden;
+    margin-right: 1370px;
+    display: inline-block;
+}
+
+img{
+    height: 120px;
+    width: 120px;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 2px;
+}
+tr:nth-child(even) {
+    background-color: #000000;
+}
+
+.finish{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 12px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: #28a745;
+    border:solid white 1px;
+    border-radius: 5px;
+    /* line-height: 30px; */
+    cursor: pointer;
+    text-decoration: none;
+}
+.finish:hover{
+    background-color: #2fdc57;
+    color:#000000
+}
+#submit{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 13px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: #0056b3;
+    border:solid white 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+#submit:hover{
+    background-color: #298cf7;
+    color:#000000
+
+
+}
+
+.buttons{
+    display: flex;
+}
+
+i{
+    color:rgb(0, 0, 0);
+    cursor:pointer;
+    border:none;
+    width: 10px;
+    height: 19px;
+    display: inline-block;
+}
+#✔{
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    cursor:pointer;
+    margin-left: 3px;
+    margin-right: 3px;
+    height: 26px;
+    border: solid white 2px;
+    border-radius: 5px;
+}
+
+#✔:hover{
+    background-color: #000000;
+    color: white;
+    border: solid white 2px;
+    border-radius: 5px;
+}
+.td{
+    width: 58px;
+}
+#deletee{
+    margin-left: 2px;
+}
+#update{
+    margin-left: 3px;
+    margin-right: 2px;
+}
+
+.note{
+    width: 200px;
+}
+.four{
+    width: 49px;
+}
+.five{
+    width: 51px;
+}
+a.login{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.login:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+a.Week{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.Week:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+a.Month{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.Month:hover{
+    background-color: #ffffff;
+    color:#000000
+}
+.four{
+    width: 49px;
+}
+.five{
+    width: 51px;
+}
+a.Search{
+    font-family: 'Handlee','El Messiri', serif;
+    padding:5px 20px ;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border:solid white 1px;
+    border-radius: 5px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.Search:hover{
+    background-color: #ffffff;
+    color:#000000
+    
+}
+
+/* #submit{
+    height: 30px;
+    width: 70px;
+    font-size: 15px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border:solid rgb(255, 255, 255) 1px;
+    border-radius: 10px;
+} */

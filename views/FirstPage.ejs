@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Laser Login</title>
+    <link rel="stylesheet" href="/cssFiles/FirstPage.css">
+    <link rel="icon" href="/top laser black .png">
+
+</head>
+<body>
+    <img src="/top laser black .png" alt="Top Laser Image" />
+        <form action="/Top-Laser-Login" method="post">
+    <input style="border: solid white 2px; border-radius: 24px; width: 350px;text-align: center;" required  id="dateInput" type="date" name="Date" >
+    <br><br>
+    <button class="Login_Button" >Save </button>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <a class="Week" href="/Top-Laser-Saturday" > Week</a>
+    <a class="login" href="/Top-Laser-Login" > Login</a>
+    <a class="Month" href="/Top-Laser-Monthely" > Month</a>
+    <br><br>
+    <a class="Search" href="/Top-Laser-Search" > Search</a>
+    <br><br>
+    <a class="Search" href="/Top-Laser-Loginn" > LogOut</a>
+
+    <script>
+        const Saturday=document.querySelector('#Saturday')
+        const Month=document.querySelector('#Month')
+        Saturday.onclick=SaturdayFunction
+        Month.onclick=MonthFunction
+    </script>
+</body>
+
+</html>

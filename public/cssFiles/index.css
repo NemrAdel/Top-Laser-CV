@@ -1,0 +1,61 @@
+body{
+        background-color: black;
+        color: white;
+        text-align: center;
+        ::selection{
+            color: rgb(182, 114, 246);
+        }
+        background-image: url('../top-laser-background2.jpg');
+        background-size: cover; 
+        background-attachment: fixed;
+
+    }
+    
+    link[rel="icon"]{
+        width: 32px;
+        height: 30px;
+    }
+    #text{
+        color: red;
+        font-family: 'Gill Sans';
+
+    }
+    #pass{
+        font-family: 'Gill Sans';
+        color: green;
+        margin-left:5px
+    }
+    #submit{
+        margin:10px;
+        color: tomato;
+        background-color: rgb(208, 211, 36);
+        border: orangered solid 1px;
+        
+    }
+    .right{
+        color: rgb(0, green, 0);
+    }
+    hr{
+        color: white;
+        border: 0.1px white solid;
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+    table{
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 2px;
+    }
+    tr:nth-child(even) {
+        background-color: #000000;
+    }
+    i{
+        color:black;
+        /* background-color: red; */
+        cursor:pointer;
+        border:none;
+    }

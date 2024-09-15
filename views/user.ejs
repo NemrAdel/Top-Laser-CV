@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link rel="stylesheet" href="/cssFiles/user.css">
+    <link rel="icon" href="/user_8483929.ico">
+</head>
+<body>
+    
+        </tr>
+        <tbody>
+            <%if(arr!=0){%>
+                <p style="margin-left: 80%;"> User ID:<%=arr[(arr.length)-1]._id %></p>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Name:</th>
+            <th>Password:</th>
+            <th>E-Mail:</th>
+            <!-- <th>Created At:</th> -->
+            <th>Country:</th>
+            <th>Male:</th>
+            <th>Updated At:</th>
+            <% const Male=["Male","Female","Nothing"] %>
+                <% arr.reverse().forEach((item,index) => {%>
+                    <tr>    
+                        <td><%= index+1 %></td>
+                        <td><%= item.UserName %></td>
+                        <td><%= item.Password %></td>
+                        <td><%= item.Email %></td>
+                        <td><%= item.Countries %></td>
+                        <td><%= item.Male %></td>
+                        <td><%= moment(item.updatedAt).format('DD MMMM YYYY,H:MM:SS A') %></td>
+    
+                    </tr>    
+                    <%})%>
+            <%}else{%>
+                <h1>No User Found</h1>
+            <%}%>
+
+        </tbody>
+    </table>
+    <a style="color:indianred;text-decoration: none;" href="/"><h3>Get back to main page 👈</h3></a>
+</body>
+</html>

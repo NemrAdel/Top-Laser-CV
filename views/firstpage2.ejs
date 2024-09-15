@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Laser Login</title>
+    <link rel="stylesheet" href="/cssFiles/FirstPage.css">
+    <link rel="icon" href="/top laser black instagram.png" type="image/png">
+
+</head>
+<body>
+    <h1>Welcome Back</h1>
+    <h1>(Nemr)</h1>
+    <form action="/Top-Laser-Login" method="post">
+    <label>Enter Date:</label>
+    <input id="dateInput" type="date" name="Today"><br><br>
+    <button onclick="submitDate()">Submit Date</button>
+    <!-- <a  href="/Top-Laser-DataEntry/<%= arr[(arr.length)-1]._id %>"><button class="save✔" >Save✔</button></a> -->
+    <p id="errorMessage" style="color: red; display: none;">Date already exists in the database. Please enter another date.</p>
+
+    
+    </form>
+    <script>
+        const selectedDate = document.getElementById('dateInput').value;
+        if (checkDateExists(selectedDate)) {
+            document.getElementById('errorMessage').style.display = 'block';
+        } else {
+
+            window.location.href = '/Top-Laser-DataEntry/' + `<%=arr2[(arr2.length)-1]._id%>`;
+        }
+
+    function checkDateExists(date) {
+        return false;
+    }
+    </script>
+</body>
+
+</html>
