@@ -540,7 +540,7 @@ server.post('/Top-Laser-Monthely/:id', async (req, res) => {
 
             }
             else{
-                res.render(path.join(__dirname, 'public', 'Loginn'))
+                res.render(path.join(__dirname, 'views', 'Loginn'))
 
             }
         })
