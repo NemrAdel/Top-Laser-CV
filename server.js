@@ -226,7 +226,7 @@ mongoose
     .connect(
         "mongodb+srv://nemradel220:BmKLk7jVrGk4gNS5@cluster0.lpaeqyq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     .then(()=>{
-        server.listen (port,()=>{
+        server.listen (process.env.PORT||port,()=>{
             console.log("the connection in "+`${text}`+`${port}`);
         });
     })
